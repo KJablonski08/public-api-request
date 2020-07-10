@@ -14,7 +14,7 @@ function getEmployee() {
 }
    
 function renderEmployee(data) {
-   employees = []
+   //employees = []
 
    let gallery = document.getElementById('gallery')
    
@@ -30,6 +30,7 @@ function renderEmployee(data) {
       gallery.appendChild(card);
       card.className = 'card';
       card.setAttribute('id', `${i}`)
+      card.onclick = getClickCallback(i)
 
       let html =
             `<div class="card-img-container">
@@ -43,15 +44,13 @@ function renderEmployee(data) {
       
       card.innerHTML = html
    }
-
-   // gallery.innerHTML = employees;
-   
-   // for (i=0; i< galleryObj.length; i++) {
-   //    galleryObj[i].addEventListener('click', () => {
-   //       console.log()
-   //    })
-   // }
-
 }
+
+function getClickCallback(i) {
+   return function() {
+      console.log(i)
+   };
+ }
+ 
 
 getEmployee();
