@@ -45,6 +45,8 @@ function getClickCallback(i, obj) {
       console.log(obj)
       let modal = document.getElementById('modal')
 
+      modal.style.display = ''
+
       let date = new Date(obj.dob.date)
       let month = date.getMonth()
       let day = date.getDate()
@@ -75,7 +77,11 @@ function getClickCallback(i, obj) {
 
       modal.innerHTML = html
 
-      
+      const close = document.getElementById('modal-close-btn');
+         close.addEventListener('click', () => {
+            modal.style.display = 'none';
+      });
+
    };
  }
  
