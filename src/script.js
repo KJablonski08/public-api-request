@@ -1,6 +1,6 @@
 
 function getEmployee() {
-   baseUrl = 'https://randomuser.me/api/?results=12'
+   baseUrl = 'https://randomuser.me/api/?results=12&nat=GB,US,NZ,AU,CA,CH,DE,DK,ES,FI,FR,IE,NL'
 
    fetch(baseUrl)
       .then(res => res.json())
@@ -76,9 +76,19 @@ function getClickCallback(i, obj) {
       modal.innerHTML = html
 
       const close = document.getElementById('modal-close-btn');
-         close.addEventListener('click', () => {
-            modal.style.display = 'none';
+      close.addEventListener('click', () => {
+         modal.style.display = 'none';
       });
+
+      const previous = document.getElementById('modal-prev')
+      previous.addEventListener('click', () => {
+         console.log('PREVIOUS')
+      })
+
+      const next = document.getElementById('modal-next')
+      next.addEventListener('click', () => {
+         console.log('NEXT PLEASE!!')
+      })
 
    };
  }
