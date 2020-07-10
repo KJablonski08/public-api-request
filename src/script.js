@@ -42,16 +42,14 @@ function renderEmployee(data) {
 function getClickCallback(i, obj) {
    return function() {
 
-      console.log(obj)
       let modal = document.getElementById('modal')
 
       modal.style.display = ''
 
       let date = new Date(obj.dob.date)
-      let month = date.getMonth()
-      let day = date.getDate()
-      let year = date.getYear()
-      console.log(month, day, year)
+      let month = date.getMonth();
+      let day = date.getDate();
+      let year = date.getYear();
 
       let html = `
       <div class="modal-container">
@@ -63,7 +61,7 @@ function getClickCallback(i, obj) {
                <p class="modal-text">${obj.email}</p>
                <p class="modal-text cap">${obj.location.city}</p>
                <hr>
-               <p class="modal-text">${obj.phone}</p>
+               <p class="modal-text">${obj.cell}</p>
                <p class="modal-text">${obj.location.street.number} ${obj.location.street.name}, ${obj.location.city}, ${obj.location.state} ${obj.location.postcode}</p>
                <p class="modal-text">Birthday: ${month}/${day}/${year}</p>
             </div>
