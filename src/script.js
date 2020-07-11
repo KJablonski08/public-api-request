@@ -1,4 +1,10 @@
-employees = []
+let employees = []
+let index;
+
+
+/**
+ * FETCH
+ */
 
 function getEmployee() {
    baseUrl = 'https://randomuser.me/api/?results=12&nat=GB,US,NZ,AU,CA,CH,DE,DK,ES,FI,FR,IE,NL'
@@ -14,6 +20,12 @@ function getEmployee() {
 
 }
    
+/**
+ * @desc renders a card object on the page for each employee 
+ * @param {object} 12 employee objects pulled from api 
+ * 
+ */
+
 function renderEmployee(data) {
 
    let gallery = document.getElementById('gallery')
@@ -25,7 +37,7 @@ function renderEmployee(data) {
       const card = document.createElement('div');
       gallery.appendChild(card);
       card.className = `card ${i}`;
-      card.onclick = getModal(employees[i], i)
+      card.onclick = getModal(employees[i])
 
       let html =
             `<div class="card-img-container">
@@ -41,11 +53,14 @@ function renderEmployee(data) {
    }
 }
 
-function getModal(obj, index) {
-   return function() {
+/**
+ * @desc on click event renders modal for each employee 
+ * @param {object} single employee object clicked on the page 
+ * 
+ */
 
-      index = index;
-      console.log(index)
+function getModal(obj) {
+   return function() {
 
       let modal = document.getElementById('modal')
       modal.style.display = ''
@@ -54,7 +69,13 @@ function getModal(obj, index) {
    };
  }
 
- function getHTML(obj) {
+ /**
+ * @desc renders HtML for modal
+ * @param {object} single employee object clicked on the page 
+ * 
+ */
+
+function getHTML(obj) {
    let date = new Date(obj.dob.date)
    let month = date.getMonth();
    let day = date.getDate();
@@ -82,18 +103,16 @@ function getModal(obj, index) {
    </div>`
 
    modal.innerHTML = html
- }
+}
+
+//modal closes when "X" button is clicked 
 
 modal.addEventListener('click', (e) => {
 
-   if (e.target.className === "modal-close-btn" || e.target.innerHTML === "X") {
+   if (e.target.className === "modal-close-btn" || e.target.innerHTML === "X" ) {
       modal.style.display = 'none';
    }
-
    
 });
-  
-
 
 getEmployee();
-console.log(employees)
